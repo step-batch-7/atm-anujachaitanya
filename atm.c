@@ -16,3 +16,15 @@ unsigned int get_money(unsigned short int amount)
   }
   return counts;
 }
+
+void display_notes(unsigned short int amount, unsigned int notes_count)
+{
+  unsigned short int notes[8] = {2000, 500, 100, 50, 20, 10, 5, 1};
+  unsigned int count = 0;
+  for (int i = 7; i >= 0; i--)
+  {
+    count = notes_count & 0xf;
+    printf("%u notes of Rs %u\n", count, notes[i]);
+    notes_count = notes_count >> 4;
+  }
+}
