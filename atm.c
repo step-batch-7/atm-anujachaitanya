@@ -1,4 +1,5 @@
 #include "atm.h"
+#include <stdio.h>
 
 unsigned int get_money(unsigned short int amount)
 {
@@ -24,7 +25,7 @@ void display_notes(unsigned short int amount, unsigned int notes_count)
   for (int i = 7; i >= 0; i--)
   {
     count = notes_count & 0xf;
-    printf("%u notes of Rs %u\n", count, notes[i]);
+    printf("%u %s of Rs %u\n", count, count > 1 ? "notes" : "note", notes[i]);
     notes_count = notes_count >> 4;
   }
 }
