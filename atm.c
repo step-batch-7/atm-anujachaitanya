@@ -11,7 +11,7 @@ unsigned int get_money(unsigned short int amount)
     for (int i = 0; i < 8; i++)
     {
       counts = counts << 4;
-      counts += remaining_amount / notes[i];
+      counts |= remaining_amount / notes[i];
       remaining_amount %= notes[i];
     }
   }
@@ -26,7 +26,7 @@ void display_notes(unsigned short int amount, unsigned int notes_count)
   for (int i = 7; i >= 0; i--)
   {
     count = notes_count & denomination_position;
-    printf("%u %s of Rs %u\n", count, count > 1 ? "notes" : "note", notes[i]);
+    count &&printf("%u %s of Rs %u\n", count, count > 1 ? "notes" : "note", notes[i]);
     notes_count = notes_count >> 4;
   }
 }
